@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo3.controllers.MarksController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="menu_view" mnemonicParsing="false" text="Вид">
+               <items>
+                  <MenuItem fx:id="menu_groups" mnemonicParsing="false" text="Группы" />
+                  <MenuItem fx:id="menu_marks" mnemonicParsing="false" text="Оценки" />
+                  <MenuItem fx:id="menu_subjects" mnemonicParsing="false" text="Предметы" />
+                  <MenuItem fx:id="menu_people" mnemonicParsing="false" text="Люди" />
+               </items>
+          </Menu>
+          <Menu fx:id="menu_change" mnemonicParsing="false" text="Изменить">
+            <items>
+              <MenuItem fx:id="menu_add_node" onAction="#onAddNode" mnemonicParsing="false" text="Добавить запись" />
+                  <MenuItem fx:id="menu_change_note" onAction="#onChangeNode" mnemonicParsing="false" text="Изменить записб" />
+                  <MenuItem fx:id="menu_delete_node" onAction="#onDeleteNode" mnemonicParsing="false" text="Удалить запись" />
+            </items>
+          </Menu>
+            <Menu fx:id="menu_report" mnemonicParsing="false" text="Отчёт">
+              <items>
+                <MenuItem fx:id="menu_pdf" mnemonicParsing="false" text="PDF" />
+                  <MenuItem fx:id="menu_xls" mnemonicParsing="false" text="XLS" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TableView fx:id="table" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="studentId" prefWidth="75.0" text="Student_id" />
+            <TableColumn fx:id="subjectId" prefWidth="75.0" text="Subject_id" />
+            <TableColumn fx:id="teacherId" prefWidth="75.0" text="Teacher_id" />
+            <TableColumn fx:id="mark" prefWidth="75.0" text="Value" />
+            <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
+            <TableColumn fx:id="groupId" prefWidth="75.0" text="Group_id" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>
