@@ -10,23 +10,22 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 
-import java.time.LocalDate;
-
 public class DeleteMarksController {
     @FXML
-    private TextField id_text_field;
+    private TextField idTextField;
 
     @FXML
     private Label completeLabel;
 
     @FXML
     protected void onDeleteClick() {
-        if (id_text_field.getText().trim().isEmpty()) {
+        if (idTextField.getText().trim().isEmpty()) {
             App.showAlert(new Alert(Alert.AlertType.ERROR, "Не указан id!"));
+            return;
         }
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
-            session.delete(session.get(Marks.class, Integer.parseInt(id_text_field.getText())));
+            session.delete(session.get(Marks.class, Integer.parseInt(idTextField.getText())));
             session.getTransaction().commit();
             Thread thread = new Thread(() -> {
                 completeLabel.setVisible(true);
@@ -45,7 +44,7 @@ public class DeleteMarksController {
 
     @FXML
     protected void onCancelClick() {
-        Stage stage = (Stage) id_text_field.getScene().getWindow();
+        Stage stage = (Stage) idTextField.getScene().getWindow();
         stage.close();
     }
 }

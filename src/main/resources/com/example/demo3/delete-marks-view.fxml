@@ -14,12 +14,12 @@
          <children>
             <HBox alignment="CENTER">
                <children>
-                  <Label fx:id="id_label" alignment="CENTER_RIGHT" text="ID">
+                  <Label fx:id="idLabel" alignment="CENTER_RIGHT" text="ID">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="id_text_field" prefHeight="25.0" prefWidth="94.0">
+                  <TextField fx:id="idTextField" prefHeight="25.0" prefWidth="94.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>

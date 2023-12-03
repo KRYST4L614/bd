@@ -22,6 +22,7 @@ public class ChangeSubjectsController {
     protected void onChangeClick() {
         if (idField.getText().trim().isEmpty() || nameField.getText().trim().isEmpty()) {
             App.showAlert(new Alert(Alert.AlertType.ERROR, "Не все поля заполнены!"));
+            return;
         }
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();

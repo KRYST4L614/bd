@@ -21,6 +21,7 @@ public class DeletePeopleController {
     protected void onDeleteClick() {
         if (idTextField.getText().trim().isEmpty()) {
             App.showAlert(new Alert(Alert.AlertType.ERROR, "Не указан id!"));
+            return;
         }
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();

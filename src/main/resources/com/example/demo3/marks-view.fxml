@@ -28,8 +28,7 @@
           </Menu>
             <Menu fx:id="menu_report" mnemonicParsing="false" text="Отчёт">
               <items>
-                <MenuItem fx:id="menu_pdf" mnemonicParsing="false" text="PDF" />
-                  <MenuItem fx:id="menu_xls" mnemonicParsing="false" text="XLS" />
+                <MenuItem fx:id="menuAvg" onAction="#showAvg" mnemonicParsing="false" text="Средний балл"/>
               </items>
             </Menu>
         </menus>

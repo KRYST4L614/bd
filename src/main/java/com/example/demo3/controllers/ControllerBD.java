@@ -29,7 +29,6 @@ public abstract class ControllerBD {
     @FXML
     protected void showSubjects() {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("subjects-view.fxml"));
-        Stage stage = new Stage();
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 600, 400);
@@ -42,7 +41,6 @@ public abstract class ControllerBD {
     @FXML
     protected void showGroups() {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("groups-view.fxml"));
-        Stage stage = new Stage();
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 600, 400);
@@ -55,7 +53,6 @@ public abstract class ControllerBD {
     @FXML
     protected void showMarks() {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("marks-view.fxml"));
-        Stage stage = new Stage();
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 600, 400);
@@ -68,7 +65,6 @@ public abstract class ControllerBD {
     @FXML
     protected void showPeople() {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("people-view.fxml"));
-        Stage stage = new Stage();
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 600, 400);
@@ -76,5 +72,19 @@ public abstract class ControllerBD {
             throw new RuntimeException(e);
         }
         App.changeScene(scene);
+    }
+
+    @FXML
+    protected void showAvg() {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("avg-view.fxml"));
+        Stage stage = new Stage();
+        Scene scene = null;
+        try {
+            scene = new Scene(fxmlLoader.load(), 600, 400);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.showAndWait();
     }
 }

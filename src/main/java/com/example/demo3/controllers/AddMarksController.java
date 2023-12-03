@@ -37,6 +37,7 @@ public class AddMarksController {
         teacherIdField.getText().trim().isEmpty() || groupIdField.getText().trim().isEmpty() || valueField.getText().trim().isEmpty() ||
                 datePicker.getValue().toString().isEmpty()) {
             App.showAlert(new Alert(Alert.AlertType.ERROR, "Не все поля заполнены!"));
+            return;
         }
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Marks marks = new Marks(Integer.parseInt(id_text_field.getText()), Integer.parseInt(studentIdField.getText()),

@@ -11,11 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 
-import java.time.LocalDate;
-
 public class ChangeMarksController {
     @FXML
-    private TextField id_text_field;
+    private TextField idTextField;
     @FXML
     private TextField studentIdField;
     @FXML
@@ -33,12 +31,13 @@ public class ChangeMarksController {
 
     @FXML
     protected void onChangeClick() {
-        if (id_text_field.getText().trim().isEmpty()) {
+        if (idTextField.getText().trim().isEmpty()) {
             App.showAlert(new Alert(Alert.AlertType.ERROR, "Не указан id!"));
+            return;
         }
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
-            Marks marks = session.get(Marks.class, Integer.parseInt(id_text_field.getText()));
+            Marks marks = session.get(Marks.class, Integer.parseInt(idTextField.getText()));
             if (!studentIdField.getText().trim().isEmpty()) {
                 marks.setStudentId(Integer.parseInt(studentIdField.getText()));
             }
@@ -76,7 +75,7 @@ public class ChangeMarksController {
 
     @FXML
     protected void onCancelClick() {
-        Stage stage = (Stage) id_text_field.getScene().getWindow();
+        Stage stage = (Stage) idTextField.getScene().getWindow();
         stage.close();
     }
 }

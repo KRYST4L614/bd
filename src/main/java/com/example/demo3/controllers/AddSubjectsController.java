@@ -23,6 +23,7 @@ public class AddSubjectsController {
     protected void onAddClick() {
         if (nameTextField.getText().trim().isEmpty()) {
             App.showAlert(new Alert(Alert.AlertType.ERROR, "Не все поля заполнены!"));
+            return;
         }
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Subjects subjects = new Subjects(1, nameTextField.getText());

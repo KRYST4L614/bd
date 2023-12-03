@@ -37,6 +37,7 @@ public class AddPeopleController {
         if (firstNameField.getText().trim().isEmpty() || lastNameField.getText().trim().isEmpty() ||
                 patherNameField.getText().trim().isEmpty() || groupIdField.getText().trim().isEmpty() || typeComboBox.getValue().toString().isEmpty()) {
             App.showAlert(new Alert(Alert.AlertType.ERROR, "Не все поля заполнены!"));
+            return;
         }
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             People people = new People(1, firstNameField.getText(),
