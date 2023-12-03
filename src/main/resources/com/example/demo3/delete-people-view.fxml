@@ -8,18 +8,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="229.0" prefWidth="304.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo3.controllers.DeleteMarksController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="229.0" prefWidth="304.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo3.controllers.DeletePeopleController">
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER">
                <children>
-                  <Label fx:id="id_label" alignment="CENTER_RIGHT" text="ID">
+                  <Label fx:id="idLabel" alignment="CENTER_RIGHT" text="ID">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="id_text_field" prefHeight="25.0" prefWidth="94.0">
+                  <TextField fx:id="idTextField" prefHeight="25.0" prefWidth="94.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>

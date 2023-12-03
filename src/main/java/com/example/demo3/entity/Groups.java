@@ -1,6 +1,5 @@
 package com.example.demo3.entity;
 
-
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,13 +10,13 @@ import javax.persistence.*;
 @Setter
 @Getter
 @Entity
-@Table(name = "TEST")
-public class Test {
+@Table(name = "GROUPS")
+public class Groups {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private int id;
 
-    @Column(name = "val")
-    private int val;
+    @Column(name = "NAME")
+    private String name;
 }

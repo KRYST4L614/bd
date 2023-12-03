@@ -1,8 +1,9 @@
 package com.example.demo3;
 
+import com.example.demo3.entity.Groups;
 import com.example.demo3.entity.Marks;
+import com.example.demo3.entity.People;
 import com.example.demo3.entity.Subjects;
-import com.example.demo3.entity.Test;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -16,6 +17,8 @@ public class HibernateUtil {
         try{
             sessionFactory = new Configuration().addAnnotatedClass(Marks.class)
                     .addAnnotatedClass(Subjects.class)
+                    .addAnnotatedClass(Groups.class)
+                    .addAnnotatedClass(People.class)
                     .configure().buildSessionFactory();
 
         }catch (Throwable ex) {

@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-public class MarksController {
+public class MarksController extends ControllerBD {
     @FXML
     private TableView<MarksData> table;
     private ObservableList<MarksData> marksData = FXCollections.observableArrayList();
@@ -61,7 +61,8 @@ public class MarksController {
         }
     }
 
-    private void refresh() {
+    @Override
+    public void refresh() {
         marksData.clear();
         List<Marks> resList;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -74,29 +75,17 @@ public class MarksController {
         }
     }
 
-    private void showAndWaitScene(String uri) {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(uri));
-        Stage stage = new Stage();
-        Scene scene = null;
-        try {
-            scene = new Scene(fxmlLoader.load(), 600, 400);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.setScene(scene);
-        stage.showAndWait();
-        refresh();
-    }
-
     @FXML
     protected void onChangeNode() {
-        showAndWaitScene("change-marks-view.fxml");
+        super.showAndWaitScene("change-marks-view.fxml");
     }
+
 
     @FXML
     protected void onAddNode() {
         showAndWaitScene("add-marks-view.fxml");
     }
+
 
     @FXML
     protected void onDeleteNode() {

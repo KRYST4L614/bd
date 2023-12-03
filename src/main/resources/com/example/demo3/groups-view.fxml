@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo3.controllers.MarksController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo3.controllers.GroupsController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -39,12 +39,7 @@
       <TableView fx:id="table" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
-          <TableColumn fx:id="studentId" prefWidth="75.0" text="Student_id" />
-            <TableColumn fx:id="subjectId" prefWidth="75.0" text="Subject_id" />
-            <TableColumn fx:id="teacherId" prefWidth="75.0" text="Teacher_id" />
-            <TableColumn fx:id="mark" prefWidth="75.0" text="Value" />
-            <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
-            <TableColumn fx:id="groupId" prefWidth="75.0" text="Group_id" />
+            <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
         </columns>
       </TableView>
    </center>

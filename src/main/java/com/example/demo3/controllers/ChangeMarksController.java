@@ -5,6 +5,7 @@ import com.example.demo3.HibernateUtil;
 import com.example.demo3.entity.Marks;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -26,7 +27,7 @@ public class ChangeMarksController {
     @FXML
     private TextField valueField;
     @FXML
-    private TextField dateField;
+    private DatePicker datePicker;
     @FXML
     private Label completeLabel;
 
@@ -53,8 +54,8 @@ public class ChangeMarksController {
             if (!valueField.getText().trim().isEmpty()) {
                 marks.setMark(Integer.parseInt(valueField.getText()));
             }
-            if (!dateField.getText().trim().isEmpty()) {
-                marks.setDate(LocalDate.parse(dateField.getText()));
+            if (!datePicker.getValue().toString().isEmpty()) {
+                marks.setDate(datePicker.getValue());
             }
             session.save(marks);
             session.getTransaction().commit();

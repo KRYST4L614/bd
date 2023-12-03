@@ -2,42 +2,25 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo3.controllers.AddMarksController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo3.controllers.AddPeopleController">
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER">
                <children>
-                  <Label fx:id="id_label" alignment="CENTER_RIGHT" prefWidth="68.0" text="ID">
+                  <Label fx:id="firstNameLabel" alignment="CENTER_RIGHT" text="FIRST_NAME">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="id_text_field" prefHeight="25.0" prefWidth="94.0">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER">
-               <children>
-                  <Label fx:id="studentIdLabel" alignment="CENTER_RIGHT" text="STUDENT_ID">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="studentIdField" prefHeight="25.0" prefWidth="94.0">
+                  <TextField fx:id="firstNameField" prefHeight="25.0" prefWidth="94.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -49,12 +32,12 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <Label fx:id="subjectIdLabel" alignment="CENTER_RIGHT" prefWidth="68.0" text="SUBJECT_ID">
+                  <Label fx:id="lastNameLabel" alignment="CENTER_RIGHT" prefWidth="68.0" text="LAST_NAME">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="subjectIdField" prefHeight="25.0" prefWidth="94.0">
+                  <TextField fx:id="lastNameField" prefHeight="25.0" prefWidth="94.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -66,12 +49,12 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <Label fx:id="teacherIdLabel" alignment="CENTER_RIGHT" prefWidth="68.0" text="TEACHER_ID">
+                  <Label fx:id="patherNameLabel" alignment="CENTER_RIGHT" prefWidth="68.0" text="PATHER_NAME">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="teacherIdField" prefWidth="94.0">
+                  <TextField fx:id="patherNameField" prefWidth="94.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -100,33 +83,16 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <Label fx:id="valueLabel" alignment="CENTER_RIGHT" prefWidth="68.0" text="VALUE">
+                  <Label fx:id="type" alignment="CENTER_RIGHT" prefWidth="68.0" text="TYPE">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="valueField" prefWidth="94.0">
+                  <ComboBox fx:id="typeComboBox" prefWidth="94.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
-                  </TextField>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER">
-               <children>
-                  <Label fx:id="dateLabel" alignment="CENTER_RIGHT" prefWidth="68.0" text="DATE">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <DatePicker fx:id="datePicker" prefWidth="94.0">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </DatePicker>
+                  </ComboBox>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" top="5.0" />

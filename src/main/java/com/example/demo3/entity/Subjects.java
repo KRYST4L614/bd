@@ -2,10 +2,7 @@ package com.example.demo3.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Builder
@@ -17,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "SUBJECTS")
 public class Subjects {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
