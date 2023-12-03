@@ -11,11 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 
-import java.time.LocalDate;
-
 public class AddMarksController {
     @FXML
-    private TextField id_text_field;
+    private TextField idTextField;
     @FXML
     private TextField studentIdField;
     @FXML
@@ -33,14 +31,14 @@ public class AddMarksController {
 
     @FXML
     protected void onAddClick() {
-        if (id_text_field.getText().trim().isEmpty() || studentIdField.getText().trim().isEmpty() || subjectIdField.getText().trim().isEmpty() ||
+        if (idTextField.getText().trim().isEmpty() || studentIdField.getText().trim().isEmpty() || subjectIdField.getText().trim().isEmpty() ||
         teacherIdField.getText().trim().isEmpty() || groupIdField.getText().trim().isEmpty() || valueField.getText().trim().isEmpty() ||
-                datePicker.getValue().toString().isEmpty()) {
+                datePicker.getValue() == null || datePicker.getValue().toString().isEmpty()) {
             App.showAlert(new Alert(Alert.AlertType.ERROR, "Не все поля заполнены!"));
             return;
         }
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Marks marks = new Marks(Integer.parseInt(id_text_field.getText()), Integer.parseInt(studentIdField.getText()),
+            Marks marks = new Marks(Integer.parseInt(idTextField.getText()), Integer.parseInt(studentIdField.getText()),
                     Integer.parseInt(subjectIdField.getText()), Integer.parseInt(teacherIdField.getText()),
                     Integer.parseInt(groupIdField.getText()), Integer.parseInt(valueField.getText()),
                     datePicker.getValue());
@@ -62,7 +60,7 @@ public class AddMarksController {
 
     @FXML
     protected void onCancelClick() {
-        Stage stage = (Stage) id_text_field.getScene().getWindow();
+        Stage stage = (Stage) idTextField.getScene().getWindow();
         stage.close();
     }
 }
