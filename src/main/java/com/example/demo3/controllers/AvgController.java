@@ -2,13 +2,12 @@ package com.example.demo3.controllers;
 
 import com.example.demo3.App;
 import com.example.demo3.HibernateUtil;
-import com.example.demo3.tableData.ResultGroupsData;
-import com.example.demo3.tableData.ResultPeopleData;
+import com.example.demo3.tableData.result.ResultGroupsData;
+import com.example.demo3.tableData.result.ResultPeopleData;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -19,7 +18,6 @@ import org.hibernate.Session;
 
 import javax.persistence.Query;
 import java.math.BigDecimal;
-import java.util.Collections;
 import java.util.List;
 
 public class AvgController {

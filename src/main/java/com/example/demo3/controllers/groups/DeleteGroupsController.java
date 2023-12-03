@@ -1,8 +1,9 @@
-package com.example.demo3.controllers;
+package com.example.demo3.controllers.groups;
 
 import com.example.demo3.App;
 import com.example.demo3.HibernateUtil;
-import com.example.demo3.entity.People;
+import com.example.demo3.entity.Groups;
+import com.example.demo3.entity.Subjects;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -10,22 +11,21 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 
-public class DeletePeopleController {
+public class DeleteGroupsController {
     @FXML
-    private TextField idTextField;
-
+    private TextField idField;
     @FXML
     private Label completeLabel;
 
     @FXML
     protected void onDeleteClick() {
-        if (idTextField.getText().trim().isEmpty()) {
+        if (idField.getText().trim().isEmpty()) {
             App.showAlert(new Alert(Alert.AlertType.ERROR, "Не указан id!"));
             return;
         }
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
-            session.delete(session.get(People.class, Integer.parseInt(idTextField.getText())));
+            session.delete(session.get(Groups.class, Integer.parseInt(idField.getText())));
             session.getTransaction().commit();
             Thread thread = new Thread(() -> {
                 completeLabel.setVisible(true);
@@ -44,7 +44,7 @@ public class DeletePeopleController {
 
     @FXML
     protected void onCancelClick() {
-        Stage stage = (Stage) idTextField.getScene().getWindow();
+        Stage stage = (Stage)idField.getScene().getWindow();
         stage.close();
     }
 }

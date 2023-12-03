@@ -1,12 +1,16 @@
-package com.example.demo3.controllers;
+package com.example.demo3.controllers.groups;
 
+import com.example.demo3.App;
 import com.example.demo3.HibernateUtil;
+import com.example.demo3.Roles;
+import com.example.demo3.controllers.ControllerBD;
 import com.example.demo3.entity.Groups;
 import com.example.demo3.tableData.GroupsData;
 import com.example.demo3.tableData.SubjectsData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -55,18 +59,27 @@ public class GroupsController extends ControllerBD {
 
     @FXML
     protected void onChangeNode() {
+        if (!App.checkRole()) {
+            return;
+        }
         super.showAndWaitScene("change-groups-view.fxml");
     }
 
 
     @FXML
     protected void onAddNode() {
+        if (!App.checkRole()) {
+            return;
+        }
         showAndWaitScene("add-groups-view.fxml");
     }
 
 
     @FXML
     protected void onDeleteNode() {
+        if (!App.checkRole()) {
+            return;
+        }
         showAndWaitScene("delete-groups-view.fxml");
     }
 }

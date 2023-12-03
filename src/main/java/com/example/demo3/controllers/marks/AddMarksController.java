@@ -1,4 +1,4 @@
-package com.example.demo3.controllers;
+package com.example.demo3.controllers.marks;
 
 import com.example.demo3.App;
 import com.example.demo3.HibernateUtil;
@@ -12,8 +12,7 @@ import javafx.stage.Stage;
 import org.hibernate.Session;
 
 public class AddMarksController {
-    @FXML
-    private TextField idTextField;
+
     @FXML
     private TextField studentIdField;
     @FXML
@@ -31,14 +30,14 @@ public class AddMarksController {
 
     @FXML
     protected void onAddClick() {
-        if (idTextField.getText().trim().isEmpty() || studentIdField.getText().trim().isEmpty() || subjectIdField.getText().trim().isEmpty() ||
+        if (studentIdField.getText().trim().isEmpty() || subjectIdField.getText().trim().isEmpty() ||
         teacherIdField.getText().trim().isEmpty() || groupIdField.getText().trim().isEmpty() || valueField.getText().trim().isEmpty() ||
                 datePicker.getValue() == null || datePicker.getValue().toString().isEmpty()) {
             App.showAlert(new Alert(Alert.AlertType.ERROR, "Не все поля заполнены!"));
             return;
         }
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Marks marks = new Marks(Integer.parseInt(idTextField.getText()), Integer.parseInt(studentIdField.getText()),
+            Marks marks = new Marks(1, Integer.parseInt(studentIdField.getText()),
                     Integer.parseInt(subjectIdField.getText()), Integer.parseInt(teacherIdField.getText()),
                     Integer.parseInt(groupIdField.getText()), Integer.parseInt(valueField.getText()),
                     datePicker.getValue());
@@ -60,7 +59,7 @@ public class AddMarksController {
 
     @FXML
     protected void onCancelClick() {
-        Stage stage = (Stage) idTextField.getScene().getWindow();
+        Stage stage = (Stage) studentIdField.getScene().getWindow();
         stage.close();
     }
 }

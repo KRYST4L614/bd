@@ -1,4 +1,4 @@
-package com.example.demo3.controllers;
+package com.example.demo3.controllers.groups;
 
 import com.example.demo3.App;
 import com.example.demo3.HibernateUtil;
@@ -9,31 +9,23 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import lombok.Getter;
 import org.hibernate.Session;
 
-public class ChangeGroupsController {
+public class AddGroupsController {
     @FXML
-    private TextField nameField;
-    @FXML
-    private TextField idField;
+    private TextField nameTextField;
     @FXML
     private Label completeLabel;
 
     @FXML
-    protected void onChangeClick() {
-        if (idField.getText().trim().isEmpty() || nameField.getText().trim().isEmpty()) {
+    protected void onAddClick() {
+        if (nameTextField.getText().trim().isEmpty()) {
             App.showAlert(new Alert(Alert.AlertType.ERROR, "Не все поля заполнены!"));
             return;
         }
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            session.beginTransaction();
-            Groups groups = session.get(Groups.class, Integer.parseInt(idField.getText()));
-            if (!nameField.getText().trim().isEmpty()) {
-                groups.setName(nameField.getText());
-            }
+            Groups groups = new Groups(1, nameTextField.getText());
             session.save(groups);
-            session.getTransaction().commit();
             Thread thread = new Thread(() -> {
                 completeLabel.setVisible(true);
                 try {
@@ -51,7 +43,7 @@ public class ChangeGroupsController {
 
     @FXML
     protected void onCancelClick() {
-        Stage stage = (Stage) nameField.getScene().getWindow();
+        Stage stage = (Stage) nameTextField.getScene().getWindow();
         stage.close();
     }
 }

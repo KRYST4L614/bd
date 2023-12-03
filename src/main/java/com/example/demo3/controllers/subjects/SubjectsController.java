@@ -1,6 +1,8 @@
-package com.example.demo3.controllers;
+package com.example.demo3.controllers.subjects;
 
+import com.example.demo3.App;
 import com.example.demo3.HibernateUtil;
+import com.example.demo3.controllers.ControllerBD;
 import com.example.demo3.entity.Subjects;
 import com.example.demo3.tableData.SubjectsData;
 import javafx.collections.FXCollections;
@@ -54,18 +56,27 @@ public class SubjectsController extends ControllerBD {
 
     @FXML
     protected void onChangeNode() {
+        if (!App.checkRole()) {
+            return;
+        }
         super.showAndWaitScene("change-subjects-view.fxml");
     }
 
 
     @FXML
     protected void onAddNode() {
+        if (!App.checkRole()) {
+            return;
+        }
         showAndWaitScene("add-subjects-view.fxml");
     }
 
 
     @FXML
     protected void onDeleteNode() {
+        if (!App.checkRole()) {
+            return;
+        }
         showAndWaitScene("delete-subjects-view.fxml");
     }
 }

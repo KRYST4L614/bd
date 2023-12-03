@@ -1,4 +1,7 @@
-package com.example.demo3.controllers;
+package com.example.demo3.controllers.login;
+
+import com.example.demo3.App;
+import com.example.demo3.Roles;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -22,7 +25,11 @@ public class LoginChecker {
         String passwordHash = passwords.get(username);
         String h = getHash(password);
         if (passwordHash == null) return false;
-        return  passwordHash.equals(getHash(password));
+        if (passwordHash.equals(getHash(password))) {
+            App.setRole(username.equals("user") ? Roles.User : Roles.Administrator);
+            return true;
+        }
+        return false;
     }
 
     public String getHash(String toHash){

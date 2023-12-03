@@ -1,4 +1,4 @@
-package com.example.demo3.tableData;
+package com.example.demo3.tableData.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,8 @@
-package com.example.demo3.controllers;
+package com.example.demo3.controllers.people;
 
+import com.example.demo3.App;
 import com.example.demo3.HibernateUtil;
+import com.example.demo3.controllers.ControllerBD;
 import com.example.demo3.entity.Marks;
 import com.example.demo3.entity.People;
 import com.example.demo3.tableData.MarksData;
@@ -71,18 +73,27 @@ public class PeopleController extends ControllerBD {
 
     @FXML
     protected void onChangeNode() {
+        if (!App.checkRole()) {
+            return;
+        }
         super.showAndWaitScene("change-people-view.fxml");
     }
 
 
     @FXML
     protected void onAddNode() {
+        if (!App.checkRole()) {
+            return;
+        }
         showAndWaitScene("add-people-view.fxml");
     }
 
 
     @FXML
     protected void onDeleteNode() {
+        if (!App.checkRole()) {
+            return;
+        }
         showAndWaitScene("delete-people-view.fxml");
     }
 }

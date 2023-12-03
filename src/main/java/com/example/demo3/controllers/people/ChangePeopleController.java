@@ -1,8 +1,7 @@
-package com.example.demo3.controllers;
+package com.example.demo3.controllers.people;
 
 import com.example.demo3.App;
 import com.example.demo3.HibernateUtil;
-import com.example.demo3.entity.Marks;
 import com.example.demo3.entity.People;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,7 +10,9 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 
-public class AddPeopleController {
+public class ChangePeopleController {
+    @FXML
+    private TextField idTextField;
     @FXML
     private TextField firstNameField;
     @FXML
@@ -26,6 +27,7 @@ public class AddPeopleController {
     @FXML
     private Label completeLabel;
 
+
     @FXML
     protected void initialize() {
         typeComboBox.setItems(types);
@@ -33,17 +35,31 @@ public class AddPeopleController {
     }
 
     @FXML
-    protected void onAddClick() {
-        if (firstNameField.getText().trim().isEmpty() || lastNameField.getText().trim().isEmpty() ||
-                patherNameField.getText().trim().isEmpty() || groupIdField.getText().trim().isEmpty() || typeComboBox.getValue().toString().isEmpty()) {
-            App.showAlert(new Alert(Alert.AlertType.ERROR, "Не все поля заполнены!"));
+    protected void onChangeClick() {
+        if (idTextField.getText().trim().isEmpty()) {
+            App.showAlert(new Alert(Alert.AlertType.ERROR, "Не указан id!"));
             return;
         }
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            People people = new People(1, firstNameField.getText(),
-                    lastNameField.getText(), patherNameField.getText(),
-                    Integer.parseInt(groupIdField.getText()), typeComboBox.getValue().toString());
+            session.beginTransaction();
+            People people = session.get(People.class, Integer.parseInt(idTextField.getText()));
+            if (!firstNameField.getText().trim().isEmpty()) {
+                people.setFirstName(firstNameField.getText());
+            }
+            if (!lastNameField.getText().trim().isEmpty()) {
+                people.setLastName(lastNameField.getText());
+            }
+            if (!patherNameField.getText().trim().isEmpty()) {
+                people.setPatherName(patherNameField.getText());
+            }
+            if (!groupIdField.getText().trim().isEmpty()) {
+                people.setGroupId(Integer.parseInt(patherNameField.getText()));
+            }
+            if (!typeComboBox.getValue().toString().trim().isEmpty()) {
+                people.setType(typeComboBox.getValue().toString());
+            }
             session.save(people);
+            session.getTransaction().commit();
             Thread thread = new Thread(() -> {
                 completeLabel.setVisible(true);
                 try {
@@ -61,7 +77,7 @@ public class AddPeopleController {
 
     @FXML
     protected void onCancelClick() {
-        Stage stage = (Stage) firstNameField.getScene().getWindow();
+        Stage stage = (Stage) idTextField.getScene().getWindow();
         stage.close();
     }
 }

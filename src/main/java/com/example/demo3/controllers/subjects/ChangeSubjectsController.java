@@ -1,4 +1,4 @@
-package com.example.demo3.controllers;
+package com.example.demo3.controllers.subjects;
 
 import com.example.demo3.App;
 import com.example.demo3.HibernateUtil;

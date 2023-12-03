@@ -1,6 +1,7 @@
-package com.example.demo3.controllers;
+package com.example.demo3.controllers.login;
 
 import com.example.demo3.App;
+import com.example.demo3.controllers.login.LoginChecker;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

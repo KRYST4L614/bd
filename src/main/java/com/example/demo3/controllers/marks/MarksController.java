@@ -1,7 +1,8 @@
-package com.example.demo3.controllers;
+package com.example.demo3.controllers.marks;
 
 import com.example.demo3.App;
 import com.example.demo3.HibernateUtil;
+import com.example.demo3.controllers.ControllerBD;
 import com.example.demo3.tableData.MarksData;
 import com.example.demo3.entity.Marks;
 import javafx.collections.FXCollections;
@@ -77,18 +78,27 @@ public class MarksController extends ControllerBD {
 
     @FXML
     protected void onChangeNode() {
+        if (!App.checkRole()) {
+            return;
+        }
         super.showAndWaitScene("change-marks-view.fxml");
     }
 
 
     @FXML
     protected void onAddNode() {
+        if (!App.checkRole()) {
+            return;
+        }
         showAndWaitScene("add-marks-view.fxml");
     }
 
 
     @FXML
     protected void onDeleteNode() {
+        if (!App.checkRole()) {
+            return;
+        }
         showAndWaitScene("delete-marks-view.fxml");
     }
 }
