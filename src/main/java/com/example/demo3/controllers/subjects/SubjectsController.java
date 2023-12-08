@@ -30,26 +30,15 @@ public class SubjectsController extends ControllerBD {
         id.setCellValueFactory(new PropertyValueFactory<SubjectsData, Integer>("id"));
         name.setCellValueFactory(new PropertyValueFactory<SubjectsData, String>("name"));
         table.setItems(subjectsData);
-        List<Subjects> resList;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query query = session.createQuery("from Subjects ");
-            resList = query.getResultList();
-            for (Subjects item : resList) {
-                subjectsData.add(new SubjectsData(item.getId(), item.getName()));
-            }
-        }
+        refresh();
     }
 
     @Override
     public void refresh() {
         subjectsData.clear();
-        List<Subjects> resList;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query query = session.createQuery("from Subjects ");
-            resList = query.getResultList();
-            for (Subjects item : resList) {
-                subjectsData.add(new SubjectsData(item.getId(), item.getName()));
-            }
+        List<Subjects> resList = HibernateUtil.getAll(Subjects.class);
+        for (Subjects item : resList) {
+            subjectsData.add(new SubjectsData(item.getId(), item.getName()));
         }
     }
 

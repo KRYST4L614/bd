@@ -51,28 +51,16 @@ public class MarksController extends ControllerBD {
         mark.setCellValueFactory(new PropertyValueFactory<MarksData, Integer>("mark"));
         date.setCellValueFactory(new PropertyValueFactory<MarksData, LocalDate>("date"));
         table.setItems(marksData);
-        List<Marks> resList;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query query = session.createQuery("from Marks");
-            resList = query.getResultList();
-            for (Marks item : resList) {
-                marksData.add(new MarksData(item.getId(), item.getStudentId(), item.getSubjectId(),
-                        item.getTeacherId(), item.getGroupId(), item.getMark(), item.getDate()));
-            }
-        }
+        refresh();
     }
 
     @Override
     public void refresh() {
         marksData.clear();
-        List<Marks> resList;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query query = session.createQuery("from Marks");
-            resList = query.getResultList();
-            for (Marks item : resList) {
-                marksData.add(new MarksData(item.getId(), item.getStudentId(), item.getSubjectId(),
-                        item.getTeacherId(), item.getGroupId(), item.getMark(), item.getDate()));
-            }
+        List<Marks> resList = HibernateUtil.getAll(Marks.class);
+        for (Marks item : resList) {
+            marksData.add(new MarksData(item.getId(), item.getStudentId(), item.getSubjectId(),
+                    item.getTeacherId(), item.getGroupId(), item.getMark(), item.getDate()));
         }
     }
 

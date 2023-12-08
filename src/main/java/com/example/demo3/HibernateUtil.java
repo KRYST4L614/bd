@@ -4,6 +4,8 @@ import com.example.demo3.entity.Groups;
 import com.example.demo3.entity.Marks;
 import com.example.demo3.entity.People;
 import com.example.demo3.entity.Subjects;
+import com.example.demo3.tableData.GroupsData;
+import lombok.Getter;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -12,6 +14,7 @@ import org.hibernate.query.Query;
 import java.util.List;
 
 public class HibernateUtil {
+    @Getter
     private static final SessionFactory sessionFactory;
     static{
         try{
@@ -27,16 +30,10 @@ public class HibernateUtil {
         }
     }
 
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
+    public static <T> List<T> getAll(Class<T> ofClass) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query<T> query = session.createQuery("from " + ofClass.getSimpleName(), ofClass);
+            return query.list();
+        }
     }
-
-    public static <T> List<T> getAll(Class<T> ofClass){
-        Session session = getSessionFactory().openSession();
-        Query<T> query = session.createQuery("from " + ofClass.getSimpleName(), ofClass);
-        List<T> answer = query.list();
-        session.close();
-        return answer;
-    }
-
 }

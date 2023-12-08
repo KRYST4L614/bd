@@ -46,28 +46,16 @@ public class PeopleController extends ControllerBD {
         groupId.setCellValueFactory(new PropertyValueFactory<PeopleData, Integer>("groupId"));
         type.setCellValueFactory(new PropertyValueFactory<PeopleData, String>("type"));
         table.setItems(peopleData);
-        List<People> resList;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query query = session.createQuery("from People ");
-            resList = query.getResultList();
-            for (People item : resList) {
-                peopleData.add(new PeopleData(item.getId(), item.getFirstName(), item.getLastName(),
-                        item.getPatherName(), item.getGroupId(), item.getType()));
-            }
-        }
+        refresh();
     }
 
     @Override
     public void refresh() {
         peopleData.clear();
-        List<People> resList;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query query = session.createQuery("from People ");
-            resList = query.getResultList();
-            for (People item : resList) {
-                peopleData.add(new PeopleData(item.getId(), item.getFirstName(), item.getLastName(),
-                        item.getPatherName(), item.getGroupId(), item.getType()));
-            }
+        List<People> resList = HibernateUtil.getAll(People.class);
+        for (People item : resList) {
+            peopleData.add(new PeopleData(item.getId(), item.getFirstName(), item.getLastName(),
+                    item.getPatherName(), item.getGroupId(), item.getType()));
         }
     }
 

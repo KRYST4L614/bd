@@ -15,10 +15,6 @@ import java.security.NoSuchAlgorithmException;
 
 public class LoginController {
     @FXML
-    private Label login_label;
-    @FXML
-    private Label password_label;
-    @FXML
     private TextField login_text_field;
     @FXML
     private PasswordField password_field;

@@ -33,14 +33,7 @@ public class GroupsController extends ControllerBD {
         id.setCellValueFactory(new PropertyValueFactory<GroupsData, Integer>("id"));
         name.setCellValueFactory(new PropertyValueFactory<GroupsData, String>("name"));
         table.setItems(groupsData);
-        List<Groups> resList;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query query = session.createQuery("from Groups ");
-            resList = query.getResultList();
-            for (Groups item : resList) {
-                groupsData.add(new GroupsData(item.getId(), item.getName()));
-            }
-        }
+        refresh();
     }
 
     @Override
